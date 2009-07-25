@@ -1,0 +1,21 @@
+[% UNLESS pages.count() %]
+<h1 class="alert">No pages are in the DB!</h1>
+[% ELSE %]
+<h1>View/Track</h1>
+[% END %]
+
+<div id="viewtrack">
+[% FOR page IN pages.all() %]
+[% views = page.views.created ? [ page.views ] : page.views %]
+<div class="count">
+  [% views.size() %]
+</div>
+<div class="path">
+  <a href="[% c.uri_for(page.path).path %]">[% page.path | html %]</a>
+</div>
+<div class="visit">
+ <b>[% views.-1.ip %]</b> <i>[% views.-1.agent.truncate(40,"&hellip;") %]</i> [% views.-1.created %]
+</div>
+<br style="clear:both"/>
+[% END %]
+</div>

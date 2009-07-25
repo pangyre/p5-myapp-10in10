@@ -1,0 +1,27 @@
+<h1>[% c.config.name | html  %] source browser</h1>
+
+<div>
+This feature is a security risk in a live, production application. To
+disable this feature remove the <code>enabled</code> setting from
+<code>Controller::Src</code>&rsquo;s entry in <a href="[%
+c.uri_for("/src").path %]/myapp.yml">the configuration file</a>.
+</div>
+
+[%-MACRO real_list_dirs(file_dir) BLOCK-%]
+[% root ||= file_dir %]
+[% IF file_dir.is_dir %]
+[% NEXT IF file_dir.stringify.match(disallowed_dir) %]
+  <li>[% file_dir.relative(root) == "." ? file_dir.relative(root.parent) : file_dir.relative(root) %]
+    <ul>[% FOR item IN file_dir.children %]
+      [% real_list_dirs(item,root) %]
+    [% END %]</ul>
+</li>
+  [% ELSE %]
+[% NEXT IF file_dir.stringify.match(disallowed_file) %]
+<li>
+  <a href="[% c.uri_for("/src").path %]/[% file_dir.relative(root).stringify | uri %]">[% file_dir.basename %]</a>
+</li>
+  [% END %]
+[%-END-%]
+
+<ul>[% real_list_dirs( c.path_to() ) %]</ul>

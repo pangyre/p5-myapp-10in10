@@ -1,0 +1,140 @@
+[%-DEFAULT title = c.config.name-%]
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+  <title>[% title | html %]</title>
+<style type="text/css" media="screen">
+body { font-size: 12px; font-family: helvetica, sans-serif; }
+a { text-decoration: none; }
+a:hover { text-decoration: underline; }
+img { margin: 25px; border: 1px solid #aaa; }
+html, body {
+ font-size: 12px; font-family: helvetica, sans-serif;
+ margin: 0;
+ padding: 0;
+ text-align: center;
+}
+
+a[rel="external"],
+a[href^="http://sedition.com"] {
+  background:url(/img/external-link.jpg) 99% 40%
+  no-repeat; padding-right: 15px;
+}
+
+#content {
+ margin: 0 auto;
+ text-align: left;
+ width: 850px;
+}
+
+#footer {
+ float:left;
+ clear:both;
+ line-height: 130%;
+ margin-top: 1.5em;
+ padding: 1ex 25px 25px 25px;
+ border-top: 1px solid #ddd;
+ font-size: 11px;
+ text-align:center;
+ width: 800px;
+}
+
+#nav {
+  margin: 10px 0;
+  text-align: right;
+}
+.alert {
+ color: #a00;
+}
+.stock {
+ float: left;
+ width: 15em;
+ text-align: right;
+ margin: 10px;
+}
+.stock h2, .stock h3, .stock h4, .stock p {
+ padding:0;
+ margin: .1ex 0;
+}
+.stock b {
+  width:4em;
+  text-align: left;
+}
+#body > ol > li {
+ font-size: 130%;
+ float: left;
+ width: 43%;
+ margin: 0 3%;
+}
+ul { list-style-type: square; }
+li {
+  font-size: 12px;
+  line-height: 120%;
+}
+h3, h4 {
+ margin: .5ex 0 .3ex 0;
+ padding: 0;
+ line-height:110%;
+ font-weight: normal;
+}
+h3 { font-size: 15px }
+h4 { font-size: 13px }
+input[type="text"] {
+  width: 25em;
+}
+#viewtrack div {
+ border-top: 1px solid #999;
+ float:left;
+ margin:0;
+ padding: 2px 1% 2px 0;
+}
+#viewtrack div.count {
+ width: 12%;
+ text-align: right;
+}
+#viewtrack div.path {
+ width: 40%;
+}
+#viewtrack div.visit {
+ width: 44%;
+}
+</style>
+<script type="text/javascript"
+  src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.js">
+</script>
+<link rel="shortcut icon" href="[% c.uri_for("/img/v-square-favicon.png").path %]" />
+</head>
+
+<body>
+<div id="content">
+  <div id="nav">
+[%-IF c.action != "index" %]
+  <a href="[% c.uri_for("/").path %]">[% c.config.name | html %]</a>
+[% END %]
+[%-IF c.action != "index" AND c.action != "src/index" %] &middot; [% END %]
+[%-IF c.action != "src/index" %]
+  <a href="[% c.uri_for("/src").path %]">Source browser</a>
+[% END %]
+  </div>
+
+<div id="body">
+[% content %]
+</div>
+
+<div id="footer">
+Content and code in this demo application&mdash;[% c.config.name %]&mdash;&copy;
+ Ashley Pond V, <a href="http://pangyresoft.org">PangyreSoft</a>.
+<br />
+Code is released under the <a href="http://www.perlfoundation.org/artistic_license_2_0">Artistic License 2.0</a>.
+<br style="clear:both" />
+<a href="http://www.catalystframework.org/"><img src="[% c.uri_for("/img/btn_120x50_built_shadow.png").path %]" alt="Powered by Catalyst" style="border:0;" /></a>
+
+</div>
+
+</div>
+
+</body>
+</html>

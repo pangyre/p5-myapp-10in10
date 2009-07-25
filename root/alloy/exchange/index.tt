@@ -1,0 +1,23 @@
+Do an Ajax select for these...
+
+And on any change, fire a request...
+
+<form>
+<fieldset>
+ <legend>Currency converter</legend>
+<input type="text" name="amount" style="width:6em; margin-right:1em"/>
+<select name="from" style="margin-right:1em">
+  [%-FOR currency IN currencies.keys() %]
+  <option [% 'selected="selected" ' IF currency == 'USD' %]value="[% currency %]" />[% currencies.$currency.name | html %] ([% currency  %])
+  [%-END %]
+</select>
+
+<select name="to" style="margin-right:1em">
+  [%-FOR currency IN currencies.keys() %]
+  <option [% 'selected="selected" ' IF currency == 'EUR' %]value="[% currency %]" />[% currencies.$currency.name | html %] ([% currency  %])
+  [%-END %]
+</select>
+
+<b></b>
+
+</form>

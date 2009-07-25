@@ -1,0 +1,35 @@
+<h1>#7, Controller::Visit + Model::Log</h1>
+[% IF rx %]
+  <h3>This is the log parsing regex set in the <a href="[% c.uri_for("/src/myapp.yml").path %]">config file</a></h3>
+  <h4>Note, names of captures are lost due to handling of compiles regular expressions</h4>
+  <pre>[% rx | html %]</pre>
+[% END %]
+
+[% IF matches.size() %]
+
+<div id="viewtrack">
+  <div class="count" style="border:0">
+    <h3>IP</h3>
+  </div>
+  <div class="path" style="border:0">
+    <h3>Request</h3>
+  </div>
+  <div class="visit" style="border:0">
+    <h3>Status &middot; agent</h3>
+  </div>
+<br style="clear:both"/>
+[% FOR match IN matches %]
+  <div class="count">
+    [% match.ip %]
+  </div>
+  <div class="path">
+    [% match.method %] [% match.request %]
+  </div>
+  <div class="visit">
+    <b>[% match.status %]</b> &middot; [% match.agent.truncate(40, '&hellip;') %]
+  </div>
+<br style="clear:both"/>
+[% END %]
+</div>
+
+[% END %]

@@ -1,0 +1,25 @@
+[% DEFAULT user = "Nobodies" %]
+<h2>OH HAI, [% user | uc | html %]!</h2>
+
+<div style="clear: both; float:left; width: 250px">
+[% IF img %]
+<h3>A randomly selected cover of <i>[% search_title | html %]</i> for you</h3>
+<img src="[% img %]" alt="508 compliance... sort of..."/>
+[% ELSE %]
+I gots nuthin fer u.
+[% END %]
+</div>
+
+<div style="float:left; width:500px;">
+[%-FOR user IN c.model("Legacy").users %]
+<div style="float:left; width:500px;">
+<h3>[% user | html %]</h3>
+<ul style="float:left; width: auto; margin-left: 2em">
+  [%-FOR type IN c.model("Legacy").types %]
+[%-uri = c.uri_for("/hybrid").path _ "?user=${user};type=${type}" %]
+  <li><a href="[% uri %]">[% user %], [% type %]</a></li>
+  [%-END %]
+</ul>
+</div>
+[%-END %]
+</div>

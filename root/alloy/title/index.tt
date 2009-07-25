@@ -1,0 +1,41 @@
+<h1>Rendered typeface (oh, all right! font) titles</h1>
+
+<div style="border:1px solid #aaa; padding: 5px; margin: 5px 0">
+<h2>Plain image</h2>
+ <img style="border:0" src="[%-img.src %]" alt="[%-img.title | html %]" />
+</div>
+
+<div style="border:1px solid #aaa; padding: 5px; margin: 5px 0">
+<h2>&lt;h2&gt; with text -indented off page and image background</h2>
+<h2 style="text-indent:-900px; margin:0; padding:0; height: 40px;
+           background: transparent url([%-img.src %]) no-repeat top left">
+ catalyst
+</h2>
+</div>
+
+<div style="border:1px solid #aaa; padding: 5px; margin: 5px 0;">
+
+<h2>Inlined calls to the model class</h2>
+
+[%-FOR t IN ['PangyreSoft', 'Ashley Rulz!' ] %]
+  <div style="text-align:center; margin: 5px;">
+    <img style="border:0"
+      src="[%-c.model("Title").heading(t) %]" alt="[% t | html %]" />
+
+<p>
+<code><span style="white-space:nowrap">&lt;img </span>
+<span style="white-space:nowrap">alt="[% "[%" %] "[% t %]" | html [% "%]" %]"</span>
+<span style="white-space:nowrap">src="[% "[%" %] c.model("Title").heading("[% t %]") [% "%]" %]"</span>
+ /&gt;</span></code>
+
+<br />
+<b><i>&hellip;results in&hellip;</i></b>
+<br />
+
+<code>[%-FILTER html %]
+    <img  alt="[% t | html %]" src="[%-c.model("Title").heading(t) %]" />
+[%-END %]</code>
+  </div>
+[%-END %]
+
+</div>

@@ -1,0 +1,77 @@
+---
+default_view: Alloy
+
+# Controllers -----------------------------------------
+
+Controller::Root:
+  viewtrack_enabled: 1
+
+Controller::Src:
+  enabled: 1
+
+
+# Models ----------------------------------------------
+
+Model::TheSchwartz:
+  args:
+    verbose: 1
+    databases:
+      - dsn: dbi:SQLite:__path_to(etc/theschwartz.sqlt)__
+
+Model::Title:
+  title_face: __path_to(etc/Cuprum.otf)__
+# Also available--lmtypewriter10-regular.ttf
+  file_root: __path_to(root/static/img/title)__
+# This is really a cache, not files you want to "keep."
+  web_dir: /img/title
+  heading_size: 40
+
+Model::PageView:
+  connect_info:
+    - dbi:SQLite:__path_to(etc/views.sqlt)__
+    - ~
+    - ~
+    - RaiseError: 1
+      AutoCommit: 1
+
+Model::Amazon::APA:
+  service_uri: http://ecs.amazonaws.com/onca/xml
+  service: AWSECommerceService
+  operation: ItemSearch
+  search_index: Books
+  # Disclosure: this associte tag is real and mine.
+  associate_tag: apv-20
+  response_group: Large
+  signature:
+    key: YOU_MUST_GET_YOUR_OWN_FROM_AMAZON
+    secret: ditto/thisizrlyasekretushudnotnaodig
+
+Model::StockQuote:
+  args:
+   - Yahoo::USA
+
+Model::Log:
+  log: __path_to(etc/access.log)__
+  rx: !!perl/regexp |-
+    (?x:\A
+      (?<ip>\S+)   \s
+      (?<identd>\S+)  \s
+      (?<htuser>\S+) \s
+      \[(?<day>\d+)/(?<month>\w+)/(?<year>\d+):(?<hour>\d\d):(?<minute>\d\d):(?<sec>\d\d)
+      \s
+      (?<offset>[^]]+)\]
+      \s
+      "(?<method>[A-Z]+)  \s (?<request>\S+) \s (?<protocol>\S+)" \s
+      (?<status>\d+) \s
+      (?<size>\d+) \s
+      "(?<referer>[^"]+)?" \s
+      "(?<agent>(?:\\"|[^"])+)"
+    \s*\z)
+
+# Views -----------------------------------------------
+
+View::Alloy:
+  INCLUDE_PATH: __path_to(root/alloy)__
+  WRAPPER: base_page.tt
+  TRIM: 1
+  COLLAPSE: 1

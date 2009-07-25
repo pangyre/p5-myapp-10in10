@@ -1,0 +1,18 @@
+<h1>This is the reminder page</h1>
+
+[% dump %]
+<form id="form" method="post" enctype="application/x-www-form-urlencoded"
+ action="[% c.req.uri.path %]">
+  <fieldset>
+    <legend>Get a reminder?</legend>
+    [%-IF problem %]
+<p class="alert">[% problem | html %]</p>
+    [%-END %]
+    <label>
+      Your email address
+      <input type="text" name="email" value="[% c.req.param("email") %]" />
+      <input type="submit" name="remind" value="Remind me!" />
+    </label>
+  </fieldset>
+</form>
+         

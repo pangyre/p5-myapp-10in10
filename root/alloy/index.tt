@@ -1,0 +1,299 @@
+[%# The .path is used on the URIs to neuter them for running the test
+    server on a high port but surfacing it as :80, it's not necessary
+    for most regular deployments %]
+
+<h1><a title="10 Catalyst models in 10 days" href="http://sedition.com/a/2733">[% c.config.name | html %]</a></h1>
+
+<h3>Application-wide Dependencies &amp; requirements</h3>
+
+<p>Recommended: <a href="http://search.cpan.org/dist/local-lib">local::lib</a>, <a href="http://search.cpan.org/dist/CPAN">CPAN</a>.</p>
+
+<p>Required: <a href="http://search.cpan.org/dist/Catalyst-Runtime">Catalyst::Runtime</a>, <a href="http://search.cpan.org/dist/Catalyst-Devel">Catalyst::Devel</a>, <a href="http://search.cpan.org/dist/Catalyst-Plugin-Unicode">Catalyst::Plugin::Unicode</a>, <a href="http://search.cpan.org/dist/Catalyst-Plugin-ConfigLoader">Catalyst::Plugin::ConfigLoader</a>, and <a href="http://search.cpan.org/dist/Catalyst-Plugin-Static-Simple">Catalyst::Plugin::Static::Simple</a>. See <a title="10 Catalyst models in 10 days" href="http://sedition.com/a/2733">[% c.config.name | html %]</a> for more information.</p>
+
+<ol>
+  <li><h3><a title="Catalyst Model #1: Random quotes" href="http://sedition.com/a/2734">Random quotes article</a></h3>
+    <ul>
+      <li><a href="[% c.uri_for("/randomquote/quote").path %]">Random quote</a>.</li>
+      <li><a href="[% c.uri_for("/randomquote/show_all").path %]">Show all quotes</a>.</li>
+    </ul>
+<h4>Pertinent source files</h4>
+    <ul>
+      <li><a href="[% c.uri_for("/src").path %]/[% "lib/MyApp/Model/RandomQuote.pm" | uri %]">MyApp::Model::RandomQuote</a>.</li>
+      <li><a href="[% c.uri_for("/src").path %]/[% "lib/MyApp/Controller/RandomQuote.pm" | uri %]">MyApp::Controller::RandomQuote</a>.</li>
+    </ul>
+
+<h4>Dependencies &amp; requirements</h4>
+    <ul>
+      <li>None.</li>
+    </ul>
+
+<h4>Suggested exercises</h4>
+    <ol>
+      <li>Extend the quoter to use files and find them via configuration, e.g., <code>__path_to()__</code>.</li>
+      <li>Make a file per quote source or type and allow source as a path argument, e.g. /randomquote/movie, /randomquote/despair.com.</li>
+    </ol>
+  </li>
+
+  <li><h3><a title="Catalyst Model #2: Moon phase data"
+  href="http://sedition.com/a/2735">Moon phase data article</a></h3>
+    <ul>
+      <li><a href="[% c.uri_for("/moonphase").path %]">No arguments in the path</a>.</li>
+      <li><a href="[% c.uri_for("/moonphase/yesterday").path %]">Yesterday</a>.</li>
+      <li><a href="[% c.uri_for("/moonphase/20010101 0:00").path %]">20010101 0:00</a>.</li>
+      <li><a href="[% c.uri_for("/moonphase/tomorrow%20at%2011:59pm").path %]">Tomorrow at 11:59pm</a>.</li>
+      <li><a href="[% c.uri_for("/moonphase/100%20days%20ago").path %]">100 days ago</a>.</li>
+      <li><a href="[% c.uri_for("/moonphase/February%2016%201984%204:36pm").path %]">February 16 1984 4:36pm</a>.</li>
+    </ul>
+
+<h4>Pertinent source files</h4>
+    <ul>
+      <li><a href="[% c.uri_for("/src").path %]/[% "lib/MyApp/Model/MoonPhase.pm" | uri %]">MyApp::Model::MoonPhase</a>.</li>
+      <li><a href="[% c.uri_for("/src").path %]/[% "lib/MyApp/Controller/MoonPhase.pm" | uri %]">MyApp::Controller::MoonPhase</a>.</li>
+    </ul>
+
+<h4>Dependencies &amp; requirements</h4>
+    <ul>
+      <li><a href="http://search.cpan.org/dist/Astro-MoonPhase">Astro::MoonPhase</a>.</li>
+      <li><a href="http://search.cpan.org/dist/Date-Manip">Date::Manip</a>.</li>
+    </ul>
+
+<h4>Advanced Suggested exercise</h4>
+    <ol>
+      <li>Create a graphic display of the moon phase.</li>
+    </ol>
+  </li>
+
+  <li style="clear:both"><h3><a title="Catalyst Model #3: Cover thumbnails"
+  href="http://sedition.com/a/2736">Cover images via article</a></h3>
+    <ul>
+      <li><a href="[% c.uri_for("/cover/search/Catalyst").path %]">Catalyst</a>.</li>
+      <li><a href="[% c.uri_for("/cover/search/Houses%20of%20the%20Holy").path %]?mode=Music">Houses of the Holy (mode=Music)</a>.</li>
+      <li><a href="[% c.uri_for("/cover/search/erotica").path %]">Erotica</a> (<abbr title="not safe for work">NSFW</abbr>).</li>
+      <li><a href="[% c.uri_for("/cover/search/Totoro").path %]?mode=DVD">Totoro (mode=DVD)</a>.</li>
+    </ul>
+
+<h4>Pertinent source files</h4>
+    <ul>
+      <li><a href="[% c.uri_for("/src").path %]/[% "lib/MyApp/Model/Amazon/APA.pm" | uri %]">MyApp::Model::Amazon::APA</a>.</li>
+      <li><a href="[% c.uri_for("/src").path %]/[% "lib/MyApp/Controller/Cover.pm" | uri %]">MyApp::Controller::Cover</a>.</li>
+    </ul>
+
+<h4>Dependencies &amp; requirements</h4>
+    <ul>
+      <li><a href="http://xmlsoft.org/">libxml</a>.</li>
+      <li><a href="http://search.cpan.org/dist/URI-Amazon-APA">URI::Amazon::APA</a>.</li>
+      <li><a href="http://search.cpan.org/dist/LWP-UserAgent">LWP::UserAgent</a>.</li>
+      <li><a href="http://search.cpan.org/dist/XML-LibXML">XML::LibXML</a>.</li>
+      <li><a href="http://search.cpan.org/dist/XML-LibXML-XPathContext">XML::LibXML::XPathContext</a>.</li>
+      <li><a href="http://search.cpan.org/dist/HTML-Entities">HTML::Entities</a>.</li>
+    </ul>
+
+<h4>Suggested exercises</h4>
+    <ol>
+      <li>Add another model method and controller to get results by keyword search instead of title.</li>
+      <li>Bring back customer reviews and average ratings for products.</li>
+    </ol>
+  </li>
+
+  <li><h3><a title="Catalyst Model #4: Random numbers"
+  href="http://sedition.com/a/2737">Random numbers article</a></h3>
+    <ul>
+      <li><a href="[% c.uri_for("/randomnumber").path %]">Random number</a>.</li>
+      <li><a href="[% c.uri_for("/randomnumber/d6").path %]">d6 (truly random)</a>.</li>
+    </ul>
+<h4>Pertinent source files</h4>
+    <ul>
+      <li><a href="[% c.uri_for("/src").path %]/[% "lib/MyApp/Model/RandomNumber.pm" | uri %]">MyApp::Model::RandomNumber</a>.</li>
+      <li><a href="[% c.uri_for("/src").path %]/[% "lib/MyApp/Controller/RandomNumber.pm" | uri %]">MyApp::Controller::RandomNumber</a>.</li>
+    </ul>
+
+<h4>Dependencies &amp; requirements</h4>
+    <ul>
+      <li><a href="http://search.cpan.org/dist/LWP-UserAgent">LWP::UserAgent</a>.</li>
+    </ul>
+
+<h4>Suggested exercises</h4>
+    <ol>
+      <li>Use Ajax via the jQuery available in these pages to create a die/dice grid to roll everything from a tetrahedron to percentile. Dragging a die to a roll box would be a fun way to do it and prevent rolling accidents and arguments.</li>
+    </ol>
+  </li>
+
+  <li style="clear:both"><h3><a title="Catalyst Model #5: Stock quotes"
+  href="http://sedition.com/a/2738">Stock quotes article</a></h3>
+    <ul>
+      <li><a href="[% c.uri_for("/stock").path %]">Stock quotes</a>.</li>
+      <li><a href="[% c.uri_for("/stock").path %]?dna,goog,msft,amzn,vita,aapl,ge">dna,goog,msft,amzn,vita,aapl,ge</a>.</li>
+      <li><a href="[% c.uri_for("/stock")  %]?foo,bar,rtfm">Fake stocks</a>.</li>
+    </ul>
+<h4>Pertinent source files</h4>
+    <ul>
+      <li><a href="[% c.uri_for("/src").path %]/[% "lib/MyApp/Model/StockQuote.pm" | uri %]">MyApp::Model::StockQuote</a>.</li>
+      <li><a href="[% c.uri_for("/src").path %]/[% "lib/MyApp/Controller/Stock.pm" | uri %]">MyApp::Controller::Stock</a>.</li>
+      <li><a href="[% c.uri_for("/src").path %]/[% "root/alloy/stock/index.tt" | uri %]">root/alloy/stock/index.tt</a>.</li>
+    </ul>
+
+<h4>Dependencies &amp; requirements</h4>
+    <ul>
+      <li><a href="http://search.cpan.org/dist/Catalyst-Model-Adaptor">Catalyst::Model::Adaptor</a>.</li>
+      <li><a href="http://search.cpan.org/dist/Finance-Quote">Finance::Quote</a>.</li>
+      <li><a href="http://search.cpan.org/dist/Catalyst-Action-RenderView">Catalyst::Action::RenderView</a>.</li>
+      <li><a href="http://search.cpan.org/dist/Template-Alloy">Template::Alloy</a> (related: <a href="http://search.cpan.org/dist/Template">Template</a>).</li>
+      <li><a href="http://search.cpan.org/dist/Catalyst-View-TT-Alloy">Catalyst::View::TT::Alloy</a>.</li>
+      <li><a href="http://search.cpan.org/dist/JSON-XS">JSON::XS</a>.</li>
+      <li><a href="http://search.cpan.org/dist/Catalyst-View-JSON">Catalyst::View::JSON</a>.</li>
+    </ul>
+
+<h4>Suggested exercises</h4>
+    <ol>
+      <li>Make a currency converter model (NB, the currency conversion
+       functionality in the Finance::Quote kit seems to be broken).</li>
+    </ol>
+  </li>
+
+  <li><h3><a title="Catalyst Model #6: Log file model–Apache access log" href="http://sedition.com/a/2739">Log file model–Apache access log</a></h3>
+    <ul>
+      <li><a href="[% c.uri_for("/visit").path %]">Visit log index</a>.</li>
+      <li><a href="[% c.uri_for("/visit/last/1").path %]">Last request</a>.</li>
+      <li><a href="[% c.uri_for("/visit/last/50").path %]">Last 50 requests</a>.</li>
+      <li><a href="[% c.uri_for("/visit/ext/html").path %]">Requests for <code>.html\z</code></a>.</li>
+      <li><a href="[% c.uri_for("/visit/ext/jpg").path %]">Requests for <code>.jpg\z</code></a>.</li>
+      <li><a href="[% c.uri_for("/visit/robots").path %]">Robot visits</a>.</li>
+    </ul>
+	<h4>Pertinent source files</h4>
+	    <ul>
+	      <li><a href="[% c.uri_for("/src").path %]/[% "lib/MyApp/Model/Log.pm" | uri %]">MyApp::Model::Log</a>.</li>
+	      <li><a href="[% c.uri_for("/src").path %]/[% "lib/MyApp/Controller/Visit.pm" | uri %]">MyApp::Controller::Visit</a>.</li>
+	      <li><a href="[% c.uri_for("/src").path %]/[% "root/alloy/visit/index.tt" | uri %]">root/alloy/visit/index.tt</a>.</li>
+	    </ul>
+
+<h4>Dependencies &amp; requirements</h4>
+    <ul>
+      <li><a href="http://www.perl.org/">Perl 5.10</a> or better.</li>
+      <li><a href="http://search.cpan.org/dist/Moose">Moose</a>.</li>
+      <li><a href="http://search.cpan.org/dist/File-ReadBackwards">File::ReadBackwards</a>.</li>
+      <li><a href="http://search.cpan.org/dist/IO-File">IO::File</a>.</li>
+    </ul>
+
+   <h4>Suggested exercises</h4>
+    <ol>
+       <li>Use the backwards search to make a referring query cloud.</li>
+    </ol>
+  </li>
+
+  <li style="clear:both"><h3><a title="Catalyst Model #7: Page view counter/tracker"
+  href="http://sedition.com/a/2740">Page view counter/tracker article</a></h3>
+    <ul>
+      <li><a href="[% c.uri_for("viewtrack").path %]">Tracking/view stats</a>.</li>
+    </ul>
+<h4>Pertinent source files</h4>
+    <ul>
+      <li><a href="[% c.uri_for("/src").path %]/[% "lib/MyApp/Model/Log.pm" | uri %]">MyApp::Model::Log</a>.</li>
+      <li><a href="[% c.uri_for("/src").path %]/[% "lib/MyApp/Controller/ViewTrack.pm" | uri %]">MyApp::Controller::ViewTrack</a>.</li>
+      <li><a href="[% c.uri_for("/src").path %]/[% "root/alloy/viewtrack/index.tt" | uri %]">root/alloy/viewtrack/index.tt</a>.</li>
+    </ul>
+
+<h4>Dependencies &amp; requirements</h4>
+    <ul>
+      <li><a href="http://search.cpan.org/dist/DBD-SQLite">DBD::SQLite</a>.</li>
+      <li><a href="http://search.cpan.org/dist/Catalyst-Model-DBIC-Schema">Catalyst::Model::DBIC::Schema</a>.</li>
+    </ul>
+
+<h4>Suggested exercises</h4>
+    <ol>
+      <li>Use <a href="http://search.cpan.org/dist/IP-Country">IP::Country</a> to add the origin of the request.</li>
+    </ol>
+  </li>
+  <li><h3><a title="Catalyst Model #8: Titles in real typefaces on demand with Imager" href="http://sedition.com/a/2741">Titles in real typefaces on demand with Imager</a></h3>
+    <ul>
+      <li><a href="[% c.uri_for("/title").path %]">/title</a>.</li>
+      <li><a href="[% c.uri_for("/title").path %]/Chapter%201">/title/Chapter%201</a>.</li>
+      <li><a href="[% c.uri_for("/title").path %]/«hønky»">/title/«hønky»</a>.</li>
+    </ul>
+<h4>Pertinent source files</h4>
+    <ul>
+    <li><a href="[% c.uri_for("/src").path %]/[% "lib/MyApp/Model/Title.pm" | uri %]">MyApp::Model::Title</a>.</li>
+    <li><a href="[% c.uri_for("/src").path %]/[% "lib/MyApp/Controller/Title.pm" | uri %]">MyApp::Controller::Title</a>.</li>
+    <li><a href="[% c.uri_for("/src").path %]/[% "root/alloy/title/index.tt" | uri %]">root/alloy/title/index.tt</a>.</li>
+    </ul>
+
+<h4>Dependencies &amp; requirements</h4>
+    <ul>
+      <li><a href="http://www.freetype.org/">FreeType2</a>.</li>
+      <li><a href="http://search.cpan.org/dist/Imager">Imager</a>.</li>
+    </ul>
+
+<h4>Suggested exercises</h4>
+    <ol>
+      <li>Add features to the API.
+<ul>
+<li>Colors, sizes, weights: face color and size, background color, transparency.</li>
+<li>Multiple typefaces and face switching on demand.</li>
+<li>Configurable expiration of created images.</li>
+</ul>
+     .</li>
+    </ol>
+  </li>
+  <li style="clear:both"><h3><a title="Catalyst Model #9: TheSchwartz" href="http://sedition.com/a/2742">TheSchwartz</a></h3>
+    <ul>
+      <li><a href="[% c.uri_for("/reminder").path %]">Set a reminder</a>.</li>
+      <li><a href="[% c.uri_for("321").path %]">321</a>.</li>
+    </ul>
+<h4>Pertinent source files</h4>
+    <ul>
+      <li><a href="[% c.uri_for("/src").path %]/[% "lib/MyApp/Model/TheSchwartz.pm" | uri %]">MyApp::Model::TheSchwartz</a>.</li>
+      <li><a href="[% c.uri_for("/src").path %]/[% "lib/MyApp/Job/Reminder.pm" | uri %]">MyApp::Job::Reminder</a>.</li>
+      <li><a href="[% c.uri_for("/src").path %]/[% "lib/MyApp/Controller/Reminder.pm" | uri %]">MyApp::Controller::Reminder</a>.</li>
+      <li><a href="[% c.uri_for("/src").path %]/[% "bin/reminder-runner.pl" | uri %]">reminder-runner.pl</a>.</li>
+      <li><a href="[% c.uri_for("/src").path %]/[% "" | uri %]">321</a>.</li>
+    </ul>
+
+<h4>Dependencies &amp; requirements</h4>
+    <ul>
+      <li><a href="http://search.cpan.org/dist/TheSchwartz">TheSchwartz</a>.</li>
+      <li>You will need to download and unpack <a href="/download/TheSchwartz-Schema.tgz">TheSchwartz-Schema.tgz</a>.</li>
+      <li><a href="http://search.cpan.org/dist/Email-Valid">Email::Valid</a>.</li>
+      <li><a href="http://search.cpan.org/dist/Digest-MD5">Digest::MD5</a>.</li>
+      <li><a href="http://search.cpan.org/dist/JSON-XS">JSON::XS</a></li>
+    </ul>
+
+<h4>Suggested exercises</h4>
+    <ol>
+      <li>Extend the quoter to use files and find them via configuration, e.g., <code>__path_to()__</code>.</li>
+      <li>Make a file per quote source or type and allow source as a path argument, e.g. /randomquote/movie, /randomquote/despair.com.</li>
+    </ol>
+<h4>Related article</h4>
+    <ul>
+      <li><a title="TheSchwartz::Schema (and auto-deployment stub)" href="http://sedition.com/a/2686">TheSchwartz::Schema (and auto-deployment stub)</a>.</li>
+     </ul>
+  </li>
+  <li><h3><a title="Catalyst Model #10: Fixing your legacy code by not fixing it" href="http://sedition.com/a/2743">Fixing your legacy code by not fixing it</a></h3>
+    <ul>
+      <li><a href="[% c.uri_for("hybrid/show_shortcut").path %]">Show the security problem in %ENV</a>.</li>
+      <li><a href="[% c.uri_for("hybrid/call_dumb").path %]">Call the sub named dumb</a>.</li>
+      <li><a href="[% c.uri_for("hybrid/call_dumber").path %]">Call dumber</a>.</li>
+      <li><a href="[% c.uri_for("hybrid").path %]">Mixing two new models with legacy code</a>.</li>
+    </ul>
+<h4>Pertinent source files</h4>
+    <ul>
+      <li><a href="[% c.uri_for("/src").path %]/[% "legacy/lib/legacy-lib.pl" | uri %]">legacy/lib/legacy-lib.pl</a>.</li>
+      <li><a href="[% c.uri_for("/src").path %]/[% "lib/MyApp/Model/Legacy.pm" | uri %]">MyApp::Model::Legacy</a>.</li>
+      <li><a href="[% c.uri_for("/src").path %]/[% "lib/MyApp/Controller/Hybrid.pm" | uri %]">MyApp::Controller::Hybrid</a>.</li>
+    </ul>
+
+<h4>Dependencies &amp; requirements</h4>
+    <ul>
+      <li><a href="http://search.cpan.org/dist/IO-CaptureOutput">IO::CaptureOutput</a>.</li>
+    </ul>
+
+<h4>Your assignment for life</h4>
+    <ol>
+      <li>Don’t ever, ever, ever write the kind of code that requires this kind of measure to work.</li>
+    </ol>
+  </li>
+</ol>
+
+<br style="clear:both"/>
+
+<h2>Wrap-up: TBD</h2>
+
+      <li><a href="[% c.uri_for("/src").path %]/[% "" | uri %]">321</a>.</li>
