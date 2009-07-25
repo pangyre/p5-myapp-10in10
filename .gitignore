@@ -1,0 +1,16 @@
+*#*
+root/static/title
+myapp_local.yml
+etc/sql
+etc/.mysql.cnf
+tmp/
+META.yml
+.svn/
+.cvs/
+inc/
+pm_to_blib/
+blib/
+Makefile
+.DS_Store
+*~
+*#
