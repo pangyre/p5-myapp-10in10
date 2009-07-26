@@ -7,11 +7,11 @@ use TheSchwartz::Job;
 use MIME::Lite;
 use Sys::Hostname "hostname";
 
+my $DEBUG = 0;
+
 sub work {
     my $class = shift;
     my TheSchwartz::Job $job = shift;
-
-    open my $f, ">>", "/tmp/10in10.log" or die $!;
 
     my $msg = MIME::Lite
         ->new(
@@ -22,10 +22,17 @@ sub work {
               Data    => "This is your reminder to visit again."
              );
 
-    #print $msg->as_string, "\n";
-    print $f $msg->as_string, $/;
-    close $f;
-#    $msg->send;
+    if ( $DEBUG )
+    {
+        open my $f, ">>", "/tmp/10in10.log" or die $!;
+        print $f "Not sending message!\n--\n";
+        print $f $msg->as_string, "\n\n";
+        close $f;
+    }
+    else
+    {
+        $msg->send;
+    }
     $job->completed();
 }
 

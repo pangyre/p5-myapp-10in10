@@ -230,7 +230,7 @@
 <li>Multiple typefaces and face switching on demand.</li>
 <li>Configurable expiration of created images.</li>
 </ul>
-     .</li>
+     </li>
     </ol>
   </li>
   <li style="clear:both"><h3><a title="Catalyst Model #9: TheSchwartz" href="http://sedition.com/a/2742">TheSchwartz</a></h3>
@@ -250,7 +250,7 @@
 <h4>Dependencies &amp; requirements</h4>
     <ul>
       <li><a href="http://search.cpan.org/dist/TheSchwartz">TheSchwartz</a>.</li>
-      <li>You will need to download and unpack <a href="/download/TheSchwartz-Schema.tgz">TheSchwartz-Schema.tgz</a>.</li>
+      <li>You will need to install the DB from the app dir: <code>./bin/deploy-theschwartz.pl</code>.</li>
       <li><a href="http://search.cpan.org/dist/Email-Valid">Email::Valid</a>.</li>
       <li><a href="http://search.cpan.org/dist/Digest-MD5">Digest::MD5</a>.</li>
       <li><a href="http://search.cpan.org/dist/JSON-XS">JSON::XS</a></li>
@@ -286,9 +286,9 @@
     </ul>
 
 <h4>Your assignment for life</h4>
-    <ol>
+    <ul>
       <li>Don’t ever, ever, ever write the kind of code that requires this kind of measure to work.</li>
-    </ol>
+    </ul>
   </li>
 </ol>
 
@@ -296,4 +296,6 @@
 
 <h2>Wrap-up: TBD</h2>
 
+[% RETURN %]
       <li><a href="[% c.uri_for("/src").path %]/[% "" | uri %]">321</a>.</li>
+

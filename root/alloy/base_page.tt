@@ -128,7 +128,8 @@ input[type="text"] {
 Content and code in this demo application&mdash;[% c.config.name %]&mdash;&copy;
  Ashley Pond V, <a href="http://pangyresoft.org">PangyreSoft</a>.
 <br />
-Code is released under the <a href="http://www.perlfoundation.org/artistic_license_2_0">Artistic License 2.0</a>.
+ Available via git at <a href="http://github.com/pangyre/p5-myapp-10in10">pangyre/p5-myapp-10in10</a>.
+ Code is released under the <a href="http://www.perlfoundation.org/artistic_license_2_0">Artistic License 2.0</a>.
 <br style="clear:both" />
 <a href="http://www.catalystframework.org/"><img src="[% c.uri_for("/img/btn_120x50_built_shadow.png").path %]" alt="Powered by Catalyst" style="border:0;" /></a>
 
