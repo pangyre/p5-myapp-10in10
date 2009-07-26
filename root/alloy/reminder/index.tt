@@ -1,7 +1,13 @@
 <h1>This is the reminder page</h1>
 
-[% dump %]
+[%-IF job %]
+<h3>Successfully submitted your reminder job!</h3>
+[%-ELSIF job_data %]
+<h3 class="alert">Did not submit your reminder job. Duplicate?</h3>
+[%-END %]
+
 <form id="form" method="post" enctype="application/x-www-form-urlencoded"
+ style="margin:0 5% 25px 5%"
  action="[% c.req.uri.path %]">
   <fieldset>
     <legend>Get a reminder?</legend>

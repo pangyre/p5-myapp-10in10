@@ -1,4 +1,5 @@
 myapp_local.yml
+script/
 *#*
 etc/theschwartz.sqlt
 etc/views.sqlt

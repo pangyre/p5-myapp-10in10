@@ -2,9 +2,10 @@ package MyApp::Controller::Reminder;
 use strict;
 use base 'Catalyst::Controller';
 use TheSchwartz::Job;
-use JSON::XS;
+use JSON::XS qw( encode_json );
 use Email::Valid;
 use Digest::MD5;
+use DBI;
 
 sub index :Path Args(0) {
     my ( $self, $c ) = @_;
@@ -23,10 +24,11 @@ sub index :Path Args(0) {
                                             arg      => \%job_data,
                                             );
 
-            my $job_handle = $c->model("TheSchwartz")->insert($job)
-                or die "Couldn't insert a job...";
+            my $job_handle = $c->model("TheSchwartz")->insert($job);
+            # Returns false for duplicate jobs.
 
-            $c->stash(job => $job_handle);
+            $c->stash(job => $job_handle,
+                      job_data => \%job_data);
         }
         else
         {
@@ -40,6 +42,8 @@ sub index :Path Args(0) {
 
 
 __END__
+
+This is *not* the right way to do a form. You should redirect upon successful submission.
 
 Maybe?
 my $job_handle = $c->model("TheSchwartz")->insert("MyApp::Job::Reminder", \%job_data)

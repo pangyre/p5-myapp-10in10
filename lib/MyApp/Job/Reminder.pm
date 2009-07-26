@@ -12,9 +12,6 @@ sub work {
     my TheSchwartz::Job $job = shift;
 
     open my $f, ">>", "/tmp/10in10.log" or die $!;
-    print $f $job->{email}, $/;
-    close $f;
-    return 1;
 
     my $msg = MIME::Lite
         ->new(
@@ -26,7 +23,9 @@ sub work {
              );
 
     #print $msg->as_string, "\n";
-    $msg->send;
+    print $f $msg->as_string, $/;
+    close $f;
+#    $msg->send;
     $job->completed();
 }
 

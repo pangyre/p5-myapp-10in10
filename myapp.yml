@@ -5,6 +5,7 @@ default_view: Alloy
 
 Controller::Root:
   viewtrack_enabled: 1
+  viewtrack_enabled: ~
 
 Controller::Src:
   enabled: 1
