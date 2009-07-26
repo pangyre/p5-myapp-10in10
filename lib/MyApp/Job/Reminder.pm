@@ -12,11 +12,10 @@ my $DEBUG = 0;
 sub work {
     my $class = shift;
     my TheSchwartz::Job $job = shift;
-
     my $msg = MIME::Lite
         ->new(
               From    => 'bit-bucket@' . hostname(),
-              To      => $job->{email},
+              To      => $job->arg->{email},
               Subject => "Something important!",
               Type    => "text/plain",
               Data    => "This is your reminder to visit again."
@@ -38,7 +37,7 @@ sub work {
 
 # From our parent class we can override these-
 sub keep_exit_status_for { 60 * 60 * 24 * 1 }
-sub max_retries { 3 }
+sub max_retries { 1 }
 sub retry_delay { 30 }
 sub grab_for { 60 * 3 }
 
@@ -70,9 +69,10 @@ One liner that detaches... with Daemon helper. -MWhatever?
 
 Dump errors:
 
-    echo &quot;use MyApp; select * from error;&quot; | mysql
+These aren't right.
+    echo &quot;select * from error;&quot; | mysql
  # Last error-
-    echo &quot;use MyApp; select * from error order by error_time desc limit 1;&quot; | mysql
+    echo &quot;select * from error order by error_time desc limit 1;&quot; | mysql
 
 =cut
 
