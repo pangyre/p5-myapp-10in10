@@ -37,8 +37,3 @@ sub index :Path Args(0) {
 }
 
 1;
-
-
-__END__
-
-This is *not* the right way to do a form. You should redirect upon successful submission.

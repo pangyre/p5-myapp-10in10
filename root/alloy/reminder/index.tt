@@ -12,7 +12,7 @@
   <fieldset>
     <legend>Get a reminder?</legend>
     [%-IF problem %]
-<p class="alert">[% problem | html %]</p>
+      <p class="alert">[% problem | html %]</p>
     [%-END %]
     <label>
       Your email address
@@ -21,4 +21,3 @@
     </label>
   </fieldset>
 </form>
-         

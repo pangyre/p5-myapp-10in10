@@ -258,13 +258,15 @@
 
 <h4>Suggested exercises</h4>
     <ol>
-       <li>321</li>
+       <li>An auxiliary controller to display pending jobs.</li>
+       <li>A list of jobs—and the required ::Job packages to support them—you can run including things like <code>traceroute</code> or feed fetching.</li>
     </ol>
 <h4>Related article</h4>
     <ul>
-      <li><a title="TheSchwartz::Schema (and auto-deployment stub)" href="http://sedition.com/a/2686">TheSchwartz::Schema (and auto-deployment stub)</a>.</li>
+      <li><i><a href="http://www.openfusion.net/web/theschwartz">Notes on TheSchwartz</a></i>.</li>
      </ul>
   </li>
+
   <li><h3><a title="Catalyst Model #10: Fixing your legacy code by not fixing it" href="http://sedition.com/a/2743">Fixing your legacy code by not fixing it</a></h3>
     <ul>
       <li><a href="[% c.uri_for("hybrid/show_shortcut").path %]">Show the security problem in %ENV</a>.</li>
