@@ -258,8 +258,7 @@
 
 <h4>Suggested exercises</h4>
     <ol>
-      <li>Extend the quoter to use files and find them via configuration, e.g., <code>__path_to()__</code>.</li>
-      <li>Make a file per quote source or type and allow source as a path argument, e.g. /randomquote/movie, /randomquote/despair.com.</li>
+       <li>321</li>
     </ol>
 <h4>Related article</h4>
     <ul>

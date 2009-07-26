@@ -15,6 +15,8 @@ my $schema = Path::Class::File->new( $app_dir,
                                      "etc",
                                      "theschwartz-sqlite-schema.sql" );
 
+-e $schema or die "Schema does not exist: $schema";
+
 $database->remove if -e $database;
 
 0 == system("sqlite3 $database < $schema")
