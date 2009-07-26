@@ -3,7 +3,6 @@ use strict;
 use warnings;
 use Path::Class::File;
 use File::Spec;
-use IO::Handle;
 
 my $self = Path::Class::File->new( File::Spec->rel2abs( $0 ) );
 my $app_dir = $self->parent->parent;
