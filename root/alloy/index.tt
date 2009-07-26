@@ -236,7 +236,6 @@
   <li style="clear:both"><h3><a title="Catalyst Model #9: TheSchwartz" href="http://sedition.com/a/2742">TheSchwartz</a></h3>
     <ul>
       <li><a href="[% c.uri_for("/reminder").path %]">Set a reminder</a>.</li>
-      <li><a href="[% c.uri_for("321").path %]">321</a>.</li>
     </ul>
 <h4>Pertinent source files</h4>
     <ul>
