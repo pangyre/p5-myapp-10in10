@@ -21,7 +21,7 @@ sub index :Path Args(0) {
                                             funcname => "MyApp::Job::Reminder",
                                             uniqkey  => $de_dupe_token,
                                             coalesce => $email,
-                                            arg      => { email => $email },
+                                            arg      => $job_data,
                                             );
 
             my $job_handle = $c->model("TheSchwartz")->insert($job);
