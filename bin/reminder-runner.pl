@@ -21,10 +21,7 @@ my $client = TheSchwartz->new(%{$args});
 
 $client->can_do("MyApp::Job::Reminder");
 
-while (1) {
-    $client->work();
-    sleep 30;
-}
+$client->work();
 
 sub _path_to {
     Path::Class::File->new($app_dir,+shift);
