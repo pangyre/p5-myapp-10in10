@@ -243,7 +243,6 @@
       <li><a href="[% c.uri_for("/src").path %]/[% "lib/MyApp/Job/Reminder.pm" | uri %]">MyApp::Job::Reminder</a>.</li>
       <li><a href="[% c.uri_for("/src").path %]/[% "lib/MyApp/Controller/Reminder.pm" | uri %]">MyApp::Controller::Reminder</a>.</li>
       <li><a href="[% c.uri_for("/src").path %]/[% "bin/reminder-runner.pl" | uri %]">reminder-runner.pl</a>.</li>
-      <li><a href="[% c.uri_for("/src").path %]/[% "" | uri %]">321</a>.</li>
     </ul>
 
 <h4>Dependencies &amp; requirements</h4>
@@ -298,4 +297,3 @@
 
 [% RETURN %]
       <li><a href="[% c.uri_for("/src").path %]/[% "" | uri %]">321</a>.</li>
-
