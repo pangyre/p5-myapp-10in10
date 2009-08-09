@@ -35,8 +35,9 @@ sub end :Private {
     if ( grep { /no such table/i } @{$c->error} )
     {
         $c->model("PageView")->schema->deploy;
-        # Try to re-render once by clearing error.
-        $c->clear_errors() unless $c->stash->{db_deploy}++;
+        # Clear this (and possibly other!) errors.
+        # DB will be there next request.
+        $c->clear_errors();
     }
     $c->forward("render");
 }

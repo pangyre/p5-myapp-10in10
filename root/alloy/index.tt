@@ -293,7 +293,8 @@
 
 <br style="clear:both"/>
 
-<h2>Wrap-up: TBD</h2>
+<h2><a title="Wrap-up: 10 Catalyst models in 10 days"
+href="http://sedition.com/a/2744">Wrap-up: 10 Catalyst models in 10 days</a></h2>
 
 [% RETURN %]
       <li><a href="[% c.uri_for("/src").path %]/[% "" | uri %]">321</a>.</li>
