@@ -10,7 +10,7 @@ my %_sig = %SIG;
 my %_env = %ENV;
 
 # Neuter this so the legacy code can't use it.
-*CORE::GLOBAL::exit = sub { 1 };
+*CORE::GLOBAL::exit = sub { 0 };
 @ENV{qw( PATH HOME SHELL USER )} = () x 4;
 
 # Do the filthy, messy deed.
