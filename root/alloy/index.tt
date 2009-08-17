@@ -296,5 +296,28 @@
 <h2><a title="Wrap-up: 10 Catalyst models in 10 days"
 href="http://sedition.com/a/2744">Wrap-up: 10 Catalyst models in 10 days</a></h2>
 
+<hr style="height:1px; border:0; border-top: 1px solid #445;" />
+
+<h2>Extended examples</h2>
+
+<ol>
+  <li><h3>.</h3>
+    <ul>
+      <li><a href="[% c.uri_for("/file").path %]">/file</a>.</li>
+    </ul>
+<h4>Pertinent source files</h4>
+    <ul>
+      <li><a href="[% c.uri_for("/src").path %]/[% "lib/MyApp/Model/File.pm" | uri %]">MyApp::Model::File</a>.</li>
+      <li><a href="[% c.uri_for("/src").path %]/[% "lib/MyApp/Controller/File.pm" | uri %]">MyApp::Controller::File</a>.</li>
+    </ul>
+
+<h4>Dependencies &amp; requirements</h4>
+    <ul>
+      <li>Core or already installed: Path::Class, Cwd.</li>
+    </ul>
+
+</ol>
+
+
 [% RETURN %]
       <li><a href="[% c.uri_for("/src").path %]/[% "" | uri %]">321</a>.</li>
