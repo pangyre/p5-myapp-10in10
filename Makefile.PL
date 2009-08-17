@@ -46,6 +46,9 @@ requires "DBIx::Class::Schema::Loader";
 requires "SQL::Translator" => 0.08;      # For $schema->deploy support.
 requires "File::Path" => 2;
 
+# New/extended stuff
+requires "MooseX::Types::Path::Class";
+
 # build_requires "Devel::CheckLib";
 #require Devel::CheckLib;
 #check_lib_or_exit( lib => 'libxml2' );
