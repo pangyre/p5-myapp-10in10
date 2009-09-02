@@ -47,7 +47,7 @@ sub AUTOLOAD {
             my ( @return, $return, $out, $err );
             if ( not defined wantarray )
             {
-                capture { $legacy_function->(@args) }, \$out, \$err;
+                capture { $legacy_function->(@args) } \$out, \$err;
                 Carp::carp($err) if $err;
                 return;
             }
