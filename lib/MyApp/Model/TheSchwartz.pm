@@ -2,7 +2,8 @@ package MyApp::Model::TheSchwartz;
 use parent "Catalyst::Model::Adaptor";
 __PACKAGE__->config( class => "TheSchwartz" );
 
-sub mangle_arguments { %{$_[1]} }
+# sub mangle_arguments { use YAML::XS; die YAML::XS::Dump \@_ }
+sub mangle_arguments { %{ $_[1]->{args} } }
 
 1;
 
