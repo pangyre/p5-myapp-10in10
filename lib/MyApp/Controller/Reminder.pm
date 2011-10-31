@@ -16,7 +16,7 @@ sub index :Path Args(0) {
         {
             my $job_data = { email => $email };
             my $de_dupe_token = md5_hex(encode_json($job_data));
-    
+
             my $job = TheSchwartz::Job->new(
                                             funcname => "MyApp::Job::Reminder",
                                             uniqkey  => $de_dupe_token,
