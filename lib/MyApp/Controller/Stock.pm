@@ -24,7 +24,7 @@ sub _normalize_hash {
         next unless $name =~ /\w/;
         $hash{$name}{$key} = $funky_hash{$compound_key};
     }
-    return \%hash;    
+    return \%hash;
 }
 
 1;
