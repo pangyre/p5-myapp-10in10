@@ -31,7 +31,7 @@ sub generate {
     else
     {
         return rand( $upper - $lower ) + $lower;
-    }    
+    }
 }
 
 sub _generate_integer {

@@ -7,7 +7,7 @@ use Moose;
 no warnings "uninitialized";
 use feature "switch";
 
-has "log" => 
+has "log" =>
     is => "rw",
     isa => "Str";
 
